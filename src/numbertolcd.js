@@ -1,7 +1,7 @@
 var NumberToLCDConverter = (function() {
-	const FIRST_ROW =  ['   ', ' _ ', ' _ ', '   ', ' _ ', ' _ ', ' _ ', ' _ ', ' _ '];
-	const SECOND_ROW = ['  |', ' _|', ' _|', '|_|', '|_ ', '|_ ', '  |', '|_|', '|_|'];
-	const THIRD_ROW =  ['  |', '|_ ', ' _|', '  |', ' _|', '|_|', '  |', '|_|', ' _|'];
+	const FIRST_ROW =  ['   ', '   ', ' _ ', ' _ ', '   ', ' _ ', ' _ ', ' _ ', ' _ ', ' _ '];
+	const SECOND_ROW = ['   ', '  |', ' _|', ' _|', '|_|', '|_ ', '|_ ', '  |', '|_|', '|_|'];
+	const THIRD_ROW =  ['   ', '  |', '|_ ', ' _|', '  |', ' _|', '|_|', '  |', '|_|', ' _|'];
 	const LINEBREAK = '\n';
 	
 	/**
@@ -11,32 +11,35 @@ var NumberToLCDConverter = (function() {
 	 @return {string} The given param as a string fit for an LCD display with three lines and arbitrary length.
 	 @throws Throws an exception if the given parameter is not a string or a number.
 	*/
-	var convertToLCD = function(param) {
-		checkParamIsStringOrNumber(param);
-		var paramAsNumber = convertToNumber(param);
-		var index = paramAsNumber - 1;
+	var convertToLCD = function(param) {		
+		var paramAsNumber = convertToInteger(param);
+		var index = getIndexOfDigit(paramAsNumber);
 		return FIRST_ROW[index] + LINEBREAK + SECOND_ROW[index] + LINEBREAK + THIRD_ROW[index] + LINEBREAK;
 	}
 	
 	/**
- 	 Checks if the given param is a string or a number and throws an exception if it is not.
-     @param {(number|string)} param A number or a string.
-	 @throws Throws an exception if the given parameter is not a string or a number.	 
+ 	 Returns the correct index for the digit in the row tables.
+     @param {number} A number.
+	 @return Returns the correct index in the row tables for numbers 1-9 and index 0 for other numbers or NaN values.
 	*/
-	var checkParamIsStringOrNumber = function(param) {
-		if (!(typeof param === 'string' || typeof param === 'number')) {
-			throw "Invalid input: should be a number or a string, was " + typeof param;
-		}
+	var getIndexOfDigit = function(digit) {
+		var index = 0;
+		if (Number.isInteger(digit) && digit >= 1 && digit <= 9) {
+			index = digit;
+		} 
+		return index;
 	}
-	
+		
 	/**
- 	 Converts the param to a number.
+ 	 Converts the param to an integer.
      @param {(number|string)} param A number or a string.
-	 @return {number} The given param as a number.	 
+	 @return {number} The given param as a number or NaN if it cannot be converted to an integer.
 	*/
-	var convertToNumber = function(param) {
-		var result = param;
-		if (typeof param === 'string') {
+	var convertToInteger = function(param) {
+		var result = NaN;
+		if (typeof param === 'string' && param.indexOf('.') === -1) {
+			result = parseInt(param, 10);
+		} else if (Number.isInteger(param)) {
 			result = parseInt(param, 10);
 		}
 		return result;

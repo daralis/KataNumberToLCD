@@ -26,6 +26,9 @@ var LCDConstants = (function() {
 	const NINE =  ' _ \n' +
 	              '|_|\n' +
 				  ' _|\n';
+	const EMPTY = '   \n' +
+	              '   \n' +
+				  '   \n';
 				
 	return {
 		ONE: ONE,
@@ -36,6 +39,7 @@ var LCDConstants = (function() {
 		SIX: SIX,
 		SEVEN: SEVEN,
 		EIGHT: EIGHT,
-		NINE: NINE
+		NINE: NINE,
+		EMPTY: EMPTY
 	};
 }());
