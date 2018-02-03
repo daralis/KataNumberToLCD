@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="manualTest.css" />
+  <title>KataNumberToLCD</title>
+  <script src="../src/numbertolcd.js"></script>
+</head>
+
+<body>
+  <div class="testForm">
+    <label for="inputField">Give a number:</label>
+    <input id="inputField" type="text">
+	<input id="inputButton" type="button" value = "Convert to LCD">
+  </div>
+  <div class="testResult">
+	<span id ="resultArea"/>	
+  </div>
+  
+  <script>
+    function refreshResult() {
+	  var inputValue = document.getElementById("inputField").value;
+	  var result = NumberToLCDConverter.printOne(inputValue);
+	  var resultArea = document.getElementById("resultArea");
+	  // Newline required in the beginning to hide browser auto-indentation
+	  resultArea.textContent = '\n' + result;
+	}
+	
+    document.getElementById("inputButton").addEventListener("click", refreshResult);
+  </script>
+  
+</body>
+
+</html>
