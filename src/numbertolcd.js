@@ -1,15 +1,18 @@
 var NumberToLCDConverter = (function() {
-	const FIRST_ROW_OF_ONE = '  |';
-    const SECOND_ROW_OF_ONE = '  |';
-	const THIRD_ROW_OF_ONE = '  |';
+	const FIRST_ROW = ['   ', ' _ '];
+	const SECOND_ROW = ['  |', ' _|'];
+	const THIRD_ROW = ['  |', '|_ '];
+	const LINEBREAK = '\n';
 	
-	var printOne = function(aNumber) {
+	var convertToLCD = function(aNumber) {
 		if (aNumber === '1') {
-			return FIRST_ROW_OF_ONE + '\n' + SECOND_ROW_OF_ONE + '\n' + THIRD_ROW_OF_ONE + '\n';
+			return FIRST_ROW[0] + LINEBREAK + SECOND_ROW[0] + LINEBREAK + THIRD_ROW[0] + LINEBREAK;
+		} else if (aNumber === '2') {
+			return FIRST_ROW[1] + LINEBREAK + SECOND_ROW[1] + LINEBREAK + THIRD_ROW[1] + LINEBREAK;
 		}
 	}
 	
 	return {
-		printOne: printOne
+		convertToLCD: convertToLCD
 	};
 }());

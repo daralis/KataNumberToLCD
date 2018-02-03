@@ -1,9 +1,13 @@
 var LCDConstants = (function() {
-	const ONE = '  |\n' +
+	const ONE = '   \n' +
 	            '  |\n' +
 				'  |\n';
+	const TWO = ' _ \n' +
+	            ' _|\n' +
+				'|_ \n';
 				
 	return {
-		ONE: ONE
+		ONE: ONE,
+		TWO: TWO
 	};
 }());

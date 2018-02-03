@@ -20,7 +20,7 @@
   <script>
     function refreshResult() {
 	  var inputValue = document.getElementById("inputField").value;
-	  var result = NumberToLCDConverter.printOne(inputValue);
+	  var result = NumberToLCDConverter.convertToLCD(inputValue);
 	  var resultArea = document.getElementById("resultArea");
 	  // Newline required in the beginning to hide browser auto-indentation
 	  resultArea.textContent = '\n' + result;
