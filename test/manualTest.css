@@ -1,4 +1,10 @@
+label {
+	display: inline-block; 
+	width: 100px; 
+	text-align: left; 
+}
+
 .testResult {
     white-space: pre;
-    font-family: "Lucida Console", monospace;    
+    font-family: "Lucida Console", monospace;	
 }

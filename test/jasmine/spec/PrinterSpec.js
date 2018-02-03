@@ -106,5 +106,18 @@ describe('NumberToLCDConverter', function() {
             expect(result).toBe(LCDConstants.FOUR_TWO_ONE_THREE);
         });
 	});
+	
+	describe("When digit matrix is wider than 3", function() {
+	    it("Converter should print 123", function() {
+            const result = NumberToLCDConverter.convertToLCD('123', 5, 3);
+            expect(result).toBe(LCDConstants.WIDER_ONE_TWO_THREE);
+        });
+	});
 
+	describe("When digit matrix is higher than 3", function() {
+	    it("Converter should print 456", function() {
+            const result = NumberToLCDConverter.convertToLCD('456', 3, 5);
+            expect(result).toBe(LCDConstants.HIGHER_FOUR_FIVE_SIX);
+        });
+	});
 });

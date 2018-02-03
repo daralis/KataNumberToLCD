@@ -8,11 +8,22 @@
 </head>
 
 <body>
-  <div class="testForm">
+  <div class="testInput">
     <label for="inputField">Give a number:</label>
     <input id="inputField" type="text">
-	<input id="inputButton" type="button" value = "Convert to LCD">
+	<br>
+	
+	<label for="widthField">Give a width:</label>
+    <input id="widthField" type="text">
+	<br>
+	
+	<label for="heightField">Give a height:</label>
+    <input id="heightField" type="text">
+	<br>
+	
+	<input id="inputButton" type="button" value="Convert to LCD">
   </div>
+  
   <div class="testResult">
 	<span id ="resultArea"/>	
   </div>
@@ -20,7 +31,11 @@
   <script>
     function refreshResult() {
 	  var inputValue = document.getElementById("inputField").value;
-	  var result = NumberToLCDConverter.convertToLCD(inputValue);
+	  var width = document.getElementById("widthField").value;
+	  var height = document.getElementById("heightField").value;
+	  
+	  var result = NumberToLCDConverter.convertToLCD(inputValue, width, height);
+	  
 	  var resultArea = document.getElementById("resultArea");
 	  // Newline required in the beginning to hide browser auto-indentation
 	  resultArea.textContent = '\n' + result;
