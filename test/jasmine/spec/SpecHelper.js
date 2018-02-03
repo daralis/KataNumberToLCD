@@ -29,6 +29,15 @@ var LCDConstants = (function() {
 	const EMPTY = '   \n' +
 	              '   \n' +
 				  '   \n';
+	const FOUR_TWO_ONE_THREE = '    _     _ \n' +
+	                           '|_| _|  | _|\n' +
+				               '  ||_   | _|\n';
+	const EMPTY_FOUR = '      \n' +
+	                   '   |_|\n' +
+				       '     |\n';
+	const PI = ' _          \n' +
+	           ' _|     ||_|\n' +
+			   ' _|     |  |\n';
 				
 	return {
 		ONE: ONE,
@@ -40,6 +49,9 @@ var LCDConstants = (function() {
 		SEVEN: SEVEN,
 		EIGHT: EIGHT,
 		NINE: NINE,
-		EMPTY: EMPTY
+		EMPTY: EMPTY,
+		FOUR_TWO_ONE_THREE: FOUR_TWO_ONE_THREE,
+		EMPTY_FOUR: EMPTY_FOUR,
+		PI: PI
 	};
 }());

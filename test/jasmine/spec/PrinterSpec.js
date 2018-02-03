@@ -55,25 +55,25 @@ describe('NumberToLCDConverter', function() {
             const result = NumberToLCDConverter.convertToLCD('0');
             expect(result).toBe(LCDConstants.EMPTY);
         });
-		it("Converter should print empty for a negative number", function() {
-            const result = NumberToLCDConverter.convertToLCD(-44);
-            expect(result).toBe(LCDConstants.EMPTY);
+		it("Converter should print empty for the minus sign in a negative number", function() {
+            const result = NumberToLCDConverter.convertToLCD(-4);
+            expect(result).toBe(LCDConstants.EMPTY_FOUR);
         });
-		it("Converter should print empty for a negative number given as a string", function() {
-            const result = NumberToLCDConverter.convertToLCD('-44');
-            expect(result).toBe(LCDConstants.EMPTY);
+		it("Converter should print empty for the minus sign in a negative number given as a string", function() {
+            const result = NumberToLCDConverter.convertToLCD('-4');
+            expect(result).toBe(LCDConstants.EMPTY_FOUR);
         });
-		it("Converter should print empty for a decimal number", function() {
+		it("Converter should print empty for the point in a decimal number", function() {
             const result = NumberToLCDConverter.convertToLCD(3.14);
-            expect(result).toBe(LCDConstants.EMPTY);
+            expect(result).toBe(LCDConstants.PI);
         });
-		it("Converter should print empty for a decimal number given as a string", function() {
+		it("Converter should print empty for the point in a decimal number given as a string", function() {
             const result = NumberToLCDConverter.convertToLCD('3.14');
-            expect(result).toBe(LCDConstants.EMPTY);
+            expect(result).toBe(LCDConstants.PI);
         });
-		it("Converter should print empty for NaN", function() {
+		it("Converter should print nothing for NaN", function() {
             const result = NumberToLCDConverter.convertToLCD(NaN);
-            expect(result).toBe(LCDConstants.EMPTY);
+            expect(result).toBe('');
         });
 	});
 	
@@ -82,17 +82,28 @@ describe('NumberToLCDConverter', function() {
             const result = NumberToLCDConverter.convertToLCD('b');
             expect(result).toBe(LCDConstants.EMPTY);
         });
-		it("Converter should print empty for empty string", function() {
+		it("Converter should print nothing for empty string", function() {
             const result = NumberToLCDConverter.convertToLCD('');
-            expect(result).toBe(LCDConstants.EMPTY);
+            expect(result).toBe('');
         });
-		it("Converter should print empty for null", function() {
+		it("Converter should print nothing for null", function() {
             const result = NumberToLCDConverter.convertToLCD(null);
-            expect(result).toBe(LCDConstants.EMPTY);
+            expect(result).toBe('');
         });
 		it("Converter should print empty for a unicode character", function() {
             const result = NumberToLCDConverter.convertToLCD('\uD83D\uDE00');
             expect(result).toBe(LCDConstants.EMPTY);
+        });
+	});
+	
+	describe("When multiple digits given as input", function() {
+	    it("Converter should print 4213 for string input", function() {
+            const result = NumberToLCDConverter.convertToLCD('4213');
+            expect(result).toBe(LCDConstants.FOUR_TWO_ONE_THREE);
+        });
+		it("Converter should print 4213 for numeric input", function() {
+            const result = NumberToLCDConverter.convertToLCD(4213);
+            expect(result).toBe(LCDConstants.FOUR_TWO_ONE_THREE);
         });
 	});
 
